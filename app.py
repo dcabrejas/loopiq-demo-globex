@@ -2,9 +2,14 @@
 from flask import Flask, jsonify
 
 app = Flask(__name__)
-VERSION = "1.3.2"
+VERSION = "1.4.0"
 
 
 @app.get("/health")
 def health():
     return jsonify(status="ok", version=VERSION)
+
+
+@app.get("/invoices/<invoice_id>")
+def invoice(invoice_id):
+    return jsonify(id=invoice_id, status="paid")
